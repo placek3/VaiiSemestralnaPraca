@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spisovateľské IDE – Prehľad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="topbar">
+            <a class="brand" href="index.html" aria-label="Spisovateľské IDE – domov">
+                <span class="brand-mark" aria-hidden="true">S</span>
+                <span>Spisovateľské IDE</span>
+            </a>
+            <div class="project-name">
+                <span class="label">Projekt</span>
+                <strong>Príbeh bez názvu</strong>
+            </div>
+            <form class="search" role="search">
+                <label class="visually-hidden" for="search">Vyhľadávanie v projekte</label>
+                <input id="search" type="search" placeholder="Vyhľadávanie">
+                <button type="submit">Hľadať</button>
+            </form>
+            <button class="profile" type="button">
+                <span class="profile-avatar" aria-hidden="true">J</span>
+                <span>@Jozko3</span>
+            </button>
+        </header>
+
+        <div class="workspace">
+            <nav class="main-nav" aria-label="Hlavná navigácia">
+                <span class="nav-heading">Pracovný priestor</span>
+                <a class="nav-link active" href="index.html" aria-current="page">Prehľad</a>
+                <a class="nav-link" href="editor.html">Editor</a>
+                <a class="nav-link" href="#outline">Osnova</a>
+                <a class="nav-link" href="#research">Research</a>
+                <a class="nav-link" href="#settings">Nastavenia</a>
+            </nav>
+
+            <main class="main-content">
+                <section class="welcome" aria-labelledby="welcome-title">
+                    <p class="eyebrow">Váš pracovný priestor</p>
+                    <h1 id="welcome-title">Pokračujte vo svojom príbehu</h1>
+                    <p>Všetky kapitoly, postavy a poznámky k projektu nájdete na jednom mieste.</p>
+                    <a class="primary-link" href="editor.html">Otvoriť editor</a>
+                </section>
+
+                <section class="project-summary" aria-labelledby="summary-title">
+                    <h2 id="summary-title">Aktuálny projekt</h2>
+                    <p class="project-title">Príbeh bez názvu</p>
+                    <p>Rozpracované kapitoly: 3</p>
+                    <p>Počet slov: 32</p>
+                    <a href="editor.html">Pokračovať v kapitole „Stretnutie“ →</a>
+                </section>
+            </main>
+
+            <aside class="quick-tools" aria-labelledby="tools-title">
+                <h2 id="tools-title">Rýchle nástroje</h2>
+                <a href="editor.html">Pokračovať v písaní</a>
+                <a id="outline" href="#outline">Otvoriť osnovu</a>
+                <a id="research" href="#research">Pozrieť poznámky</a>
+                <a id="settings" href="#settings">Nastavenia projektu</a>
+            </aside>
+        </div>
+
+        <footer class="statusbar">
+            <span>Aktuálny projekt: <strong>Príbeh bez názvu</strong></span>
+            <span>Počet slov: <strong>32</strong></span>
+            <span>Stav uloženia: <strong><span class="saved-dot"></span> Uložené</strong></span>
+        </footer>
+    </div>
+</body>
+</html>

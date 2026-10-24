@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spisovateľské IDE – Editor</title>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <div class="app">
+        <header class="topbar">
+            <a class="brand" href="index.html" aria-label="Spisovateľské IDE – domov">
+                <span class="brand-mark" aria-hidden="true">S</span>
+                <span>Spisovateľské IDE</span>
+            </a>
+
+            <div class="project-name">
+                <span class="label">Projekt</span>
+                <strong>Príbeh bez názvu</strong>
+            </div>
+
+            <form class="search" role="search">
+                <label class="visually-hidden" for="search">Vyhľadávanie v texte</label>
+                <input id="search" type="search" placeholder="Vyhľadávanie v texte">
+                <button type="submit" aria-label="Vyhľadať">Hľadať</button>
+            </form>
+
+            <button class="profile" type="button">
+                <span class="profile-avatar" aria-hidden="true">J</span>
+                <span>@Jozko3</span>
+            </button>
+        </header>
+
+        <div class="workspace">
+            <nav class="main-nav" aria-label="Hlavná navigácia">
+                <span class="nav-heading">Pracovný priestor</span>
+                <a class="nav-link active" href="editor.html" aria-current="page">Editor</a>
+                <a class="nav-link" href="index.html#outline">Osnova</a>
+                <a class="nav-link" href="index.html#research">Research</a>
+                <a class="nav-link" href="index.html#settings">Nastavenia</a>
+            </nav>
+
+            <aside class="chapters panel" id="outline" aria-labelledby="chapters-title">
+                <div class="panel-heading">
+                    <h2 id="chapters-title">Kapitoly</h2>
+                    <button class="icon-button" type="button" aria-label="Pridať kapitolu">+</button>
+                </div>
+                <ol class="chapter-list">
+                    <li><a href="#editor"><span>1.</span> Začiatok cesty</a></li>
+                    <li><a href="#editor"><span>2.</span> Starý les</a></li>
+                    <li class="selected">
+                        <a href="#editor" aria-current="location"><span>3.</span> Stretnutie</a>
+                        <ul>
+                            <li><a href="#editor">Scéna 1 <span class="status done">hotová</span></a></li>
+                            <li><a href="#editor">Scéna 2 <span class="status draft">koncept</span></a></li>
+                        </ul>
+                    </li>
+                </ol>
+                <button class="add-chapter" type="button">+ Pridať kapitolu</button>
+            </aside>
+
+            <main class="editor panel" id="editor">
+                <div class="chapter-toolbar">
+                    <div>
+                        <span class="eyebrow">Kapitola 3</span>
+                        <h1>Stretnutie</h1>
+                    </div>
+                    <button class="close-button" type="button" aria-label="Zavrieť kapitolu">×</button>
+                </div>
+
+                <div class="format-toolbar" aria-label="Formátovanie textu">
+                    <button type="button" aria-label="Tučné písmo"><strong>B</strong></button>
+                    <button type="button" aria-label="Kurzíva"><em>I</em></button>
+                    <button type="button" aria-label="Zoznam">• Zoznam</button>
+                    <span class="save-state">Uložené</span>
+                </div>
+
+                <label class="visually-hidden" for="chapter-text">Text kapitoly</label>
+                <textarea id="chapter-text" spellcheck="false">Cesta sa pred Elenou strácala medzi vysokými stromami. Zastavila sa a započúvala do ticha lesa.
+
+Zrazu začula za sebou prasknutie vetvičky.
+
+„Kto je tam?“ spýtala sa a obrátila sa k tmavému chodníku.</textarea>
+                <p class="editor-hint">Pokračujte v písaní svojej kapitoly…</p>
+            </main>
+
+            <aside class="inspector panel" id="research" aria-labelledby="inspector-title">
+                <h2 id="inspector-title">Rýchly náhľad</h2>
+                <p class="inspector-caption">Podklady k projektu</p>
+                <a class="inspector-link active" href="#characters">Postavy <span>3</span></a>
+                <a class="inspector-link" href="#objects">Predmety <span>2</span></a>
+                <a class="inspector-link" href="#notes">Poznámky <span>4</span></a>
+                <div class="inspector-note" id="characters">
+                    <span class="note-label">Postava v kapitole</span>
+                    <strong>Elena</strong>
+                    <p>Mladá cestovateľka, ktorá hľadá cestu domov.</p>
+                </div>
+            </aside>
+        </div>
+
+        <footer class="statusbar">
+            <span>Projekt: <strong>Príbeh bez názvu</strong></span>
+            <span>Počet slov: <strong>32</strong></span>
+            <span>Stav uloženia: <strong><span class="saved-dot"></span> Uložené</strong></span>
+        </footer>
+    </div>
+</body>
+</html>
