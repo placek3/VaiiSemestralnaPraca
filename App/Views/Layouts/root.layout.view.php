@@ -1,58 +1,63 @@
 <?php
 
 /** @var string $contentHTML */
-/** @var \Framework\Auth\AppUser $user */
 /** @var \Framework\Support\LinkGenerator $link */
+$currentPage = $_GET['a'] ?? 'index';
+$isEditor = $currentPage === 'editor';
 ?>
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <title><?= App\Configuration::APP_NAME ?></title>
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= $link->asset('favicons/apple-touch-icon.png') ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $link->asset('favicons/favicon-32x32.png') ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $link->asset('favicons/favicon-16x16.png') ?>">
-    <link rel="manifest" href="<?= $link->asset('favicons/site.webmanifest') ?>">
-    <link rel="shortcut icon" href="<?= $link->asset('favicons/favicon.ico') ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?= $link->asset('css/styl.css') ?>">
-    <script src="<?= $link->asset('js/script.js') ?>"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= App\Configuration::APP_NAME ?> – <?= $isEditor ? 'Editor' : 'Prehľad' ?></title>
+    <link rel="stylesheet" href="<?= $link->asset($isEditor ? 'css/editor.css' : 'css/style.css') ?>">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">
-            <img src="<?= $link->asset('images/vaiicko_logo.png') ?>" title="<?= App\Configuration::APP_NAME ?>" alt="Framework Logo">
-        </a>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="<?= $link->url('home.contact') ?>">Contact</a>
-            </li>
-        </ul>
-        <?php if ($user->isLoggedIn()) { ?>
-            <span class="navbar-text">Logged in user: <b><?= $user->getName() ?></b></span>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('auth.logout') ?>">Log out</a>
-                </li>
-            </ul>
-        <?php } else { ?>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= App\Configuration::LOGIN_URL ?>">Log in</a>
-                </li>
-            </ul>
-        <?php } ?>
+    <div class="app">
+        <header class="topbar">
+            <a class="brand" href="<?= $link->url('home.index') ?>" aria-label="<?= App\Configuration::APP_NAME ?> – domov">
+                <span class="brand-mark" aria-hidden="true">S</span>
+                <span><?= App\Configuration::APP_NAME ?></span>
+            </a>
+            <div class="project-name">
+                <span class="label">Projekt</span>
+                <strong>Príbeh bez názvu</strong>
+            </div>
+            <form class="search" role="search">
+                <label class="visually-hidden" for="search">Vyhľadávanie v projekte</label>
+                <input id="search" type="search" placeholder="Vyhľadávanie">
+                <button type="submit">Hľadať</button>
+            </form>
+            <button class="profile" type="button">
+                <span class="profile-avatar" aria-hidden="true">J</span>
+                <span>@Jozko3</span>
+            </button>
+        </header>
+
+        <div class="workspace">
+            <nav class="main-nav" aria-label="Hlavná navigácia">
+                <span class="nav-heading">Pracovný priestor</span>
+                <a
+                    class="nav-link<?= $isEditor ? '' : ' active' ?>"
+                    href="<?= $link->url('home.index') ?>"
+                    <?= $isEditor ? '' : 'aria-current="page"' ?>
+                >Prehľad</a>
+                <a
+                    class="nav-link<?= $isEditor ? ' active' : '' ?>"
+                    href="<?= $link->url('home.editor') ?>"
+                    <?= $isEditor ? 'aria-current="page"' : '' ?>
+                >Editor</a>
+            </nav>
+
+            <?= $contentHTML ?>
+        </div>
+
+        <footer class="statusbar">
+            <span>Aktuálny projekt: <strong>Príbeh bez názvu</strong></span>
+            <span>Počet slov: <strong>32</strong></span>
+            <span>Stav uloženia: <strong><span class="saved-dot"></span> Uložené</strong></span>
+        </footer>
     </div>
-</nav>
-<div class="container-fluid mt-3">
-    <div class="web-content">
-        <?= $contentHTML ?>
-    </div>
-</div>
 </body>
 </html>

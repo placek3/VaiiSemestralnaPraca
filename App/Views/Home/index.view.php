@@ -2,38 +2,27 @@
 
 /** @var \Framework\Support\LinkGenerator $link */
 ?>
+<main class="main-content">
+    <section class="welcome" aria-labelledby="welcome-title">
+        <p class="eyebrow">Váš pracovný priestor</p>
+        <h1 id="welcome-title">Pokračujte vo svojom príbehu</h1>
+        <p>Všetky kapitoly, postavy a poznámky k projektu nájdete na jednom mieste.</p>
+        <a class="primary-link" href="<?= $link->url('home.editor') ?>">Otvoriť editor</a>
+    </section>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col mt-5">
-            <div class="text-center">
-                <h2>Vaííčko MVC FW</h2>
-                <h3>Version <?= App\Configuration::FW_VERSION ?></h3>
-                <img src="<?= $link->asset('images/vaiicko_logo.png') ?>" alt="Framework Logo">
-                <p>
-                    Congratulations, you have successfully installed and run the framework
-                    <strong>Vaííčko</strong> <?= App\Configuration::FW_VERSION ?>!<br>
-                    We hope that you will create a great application using this framework.<br>
-                </p>
-                <p>
-                    This simple framework was created for teaching purposes and to better understand how the MVC
-                    architecture works.<br>
-                    It is intended for students of the subject <em>web application development</em>, but not only
-                    for them.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <h4>Authors</h4>
-            <div>
-                <a href="mailto:Patrik.Hrkut@fri.uniza.sk">doc. Ing. Patrik Hrkút, PhD.</a><br>
-                <a href="mailto:Michal.Duracik@fri.uniza.sk">Ing. Michal Ďuračík, PhD.</a><br>
-                <a href="mailto:Matej.Mesko@fri.uniza.sk">Ing. Matej Meško, PhD.</a><br><br>
-                &copy; 2020-<?= date('Y') ?> University of Žilina, Faculty of Management Science and Informatics,
-                Department of Software Technologies
-            </div>
-        </div>
-    </div>
-</div>
+    <section class="project-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Aktuálny projekt</h2>
+        <p class="project-title">Príbeh bez názvu</p>
+        <p>Rozpracované kapitoly: 3</p>
+        <p>Počet slov: 32</p>
+        <a href="<?= $link->url('home.editor') ?>">Pokračovať v kapitole „Stretnutie“ →</a>
+    </section>
+</main>
+
+<aside class="quick-tools" aria-labelledby="tools-title">
+    <h2 id="tools-title">Rýchle nástroje</h2>
+    <a href="<?= $link->url('home.editor') ?>">Pokračovať v písaní</a>
+    <a id="outline" href="#outline">Otvoriť osnovu</a>
+    <a id="research" href="#research">Pozrieť poznámky</a>
+    <a id="settings" href="#settings">Nastavenia projektu</a>
+</aside>

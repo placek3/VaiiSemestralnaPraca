@@ -96,3 +96,27 @@ Aplikácia zjednocuje celý proces tvorby príbehu do jedného prehľadného web
 * Integrovaný mini-prehliadač/ukladač webových výstrižkov do rešeršného centra.
 * Štatistiky písania (denný cieľ slov, grafy produktivity).
 * Tmavý režim (Dark Mode) a Focus Mode pre nerušené písanie.
+
+## Spustenie aplikácie Vaííčko
+
+Framework je umiestnený v koreňovom priečinku repozitára. Na lokálne spustenie stačí PHP 8.3 alebo novšie:
+
+```powershell
+php -S localhost:8000 -t public
+```
+
+Potom otvorte [http://localhost:8000](http://localhost:8000). Alternatívne, ak je nainštalovaný a spustený Docker:
+
+```powershell
+docker compose up -d web
+```
+
+Docker konfigurácia sprístupní aplikáciu na [http://localhost](http://localhost). Zastavenie služieb:
+
+```powershell
+docker compose down
+```
+
+Prehľad aplikácie obsluhuje akcia `HomeController::index` a editor akcia `HomeController::editor`. Obe stránky
+zdieľajú `root` layout; ich obsah je v samostatných pohľadoch a štýly sú v `public/css`. Pôvodná statická verzia
+zostáva v priečinku `html`.

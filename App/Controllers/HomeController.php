@@ -43,6 +43,16 @@ class HomeController extends BaseController
     }
 
     /**
+     * Displays the writing editor.
+     *
+     * @return Response The response object containing the rendered editor view.
+     */
+    public function editor(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    /**
      * Displays the contact page.
      *
      * This action serves the HTML view for the contact page, which is accessible to all users without any
