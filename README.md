@@ -120,3 +120,7 @@ docker compose down
 Prehľad aplikácie obsluhuje akcia `HomeController::index` a editor akcia `HomeController::editor`. Obe stránky
 zdieľajú `root` layout; ich obsah je v samostatných pohľadoch a štýly sú v `public/css`. Pôvodná statická verzia
 zostáva v priečinku `html`.
+
+Sekcia **Databáza sveta** (`?c=world`) umožňuje zobrazovať, pridávať, upravovať a odstraňovať postavy, lokality,
+predmety a pojmy. Záznamy spravuje model `App\Models\WorldEntity` cez vstavané ORM frameworku. Pri Docker štarte sa
+`docker/sql/001_world_entities.sql` automaticky spustí a vytvorí tabuľku `world_entities`.

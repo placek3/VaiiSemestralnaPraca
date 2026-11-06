@@ -3,15 +3,22 @@
 /** @var string $contentHTML */
 /** @var \Framework\Support\LinkGenerator $link */
 $currentPage = $_GET['a'] ?? 'index';
+$currentController = $_GET['c'] ?? 'home';
 $isEditor = $currentPage === 'editor';
+$isWorld = $currentController === 'world';
+$isHome = !$isEditor && !$isWorld;
+$pageTitle = $isEditor ? 'Editor' : ($isWorld ? 'Databáza sveta' : 'Prehľad');
 ?>
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= App\Configuration::APP_NAME ?> – <?= $isEditor ? 'Editor' : 'Prehľad' ?></title>
+    <title><?= App\Configuration::APP_NAME ?> – <?= $pageTitle ?></title>
     <link rel="stylesheet" href="<?= $link->asset($isEditor ? 'css/editor.css' : 'css/style.css') ?>">
+    <?php if ($isWorld): ?>
+        <link rel="stylesheet" href="<?= $link->asset('css/world.css') ?>">
+    <?php endif; ?>
 </head>
 <body>
     <div class="app">
@@ -39,15 +46,20 @@ $isEditor = $currentPage === 'editor';
             <nav class="main-nav" aria-label="Hlavná navigácia">
                 <span class="nav-heading">Pracovný priestor</span>
                 <a
-                    class="nav-link<?= $isEditor ? '' : ' active' ?>"
+                    class="nav-link<?= $isHome ? ' active' : '' ?>"
                     href="<?= $link->url('home.index') ?>"
-                    <?= $isEditor ? '' : 'aria-current="page"' ?>
+                    <?= $isHome ? 'aria-current="page"' : '' ?>
                 >Prehľad</a>
                 <a
                     class="nav-link<?= $isEditor ? ' active' : '' ?>"
                     href="<?= $link->url('home.editor') ?>"
                     <?= $isEditor ? 'aria-current="page"' : '' ?>
                 >Editor</a>
+                <a
+                    class="nav-link<?= $isWorld ? ' active' : '' ?>"
+                    href="<?= $link->url('world.index') ?>"
+                    <?= $isWorld ? 'aria-current="page"' : '' ?>
+                >Databáza sveta</a>
             </nav>
 
             <?= $contentHTML ?>

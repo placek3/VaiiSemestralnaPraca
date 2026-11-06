@@ -1,0 +1,167 @@
+.world-page {
+    grid-column: 2 / -1;
+    min-width: 0;
+}
+
+.world-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.world-heading h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.world-heading p:last-child {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.world-button,
+.world-secondary,
+.world-danger {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #555;
+    color: #fff;
+    font: inherit;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.world-empty,
+.world-form,
+.world-card {
+    padding: 22px;
+    border: 1px solid #dedede;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.world-empty h2 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+}
+
+.world-empty p {
+    margin: 0 0 18px;
+    color: #666;
+}
+
+.world-list {
+    display: grid;
+    gap: 12px;
+}
+
+.world-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.world-card-copy {
+    min-width: 0;
+}
+
+.world-type {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #eee;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+.world-card h2 {
+    margin: 10px 0 6px;
+    font-size: 1.15rem;
+}
+
+.world-card p {
+    margin: 0;
+    color: #666;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.world-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.world-actions form {
+    margin: 0;
+}
+
+.world-secondary {
+    border-color: #ccc;
+    background: #fff;
+    color: #333;
+}
+
+.world-danger {
+    border-color: #a33;
+    background: #fff;
+    color: #922;
+}
+
+.world-form {
+    display: grid;
+    max-width: 720px;
+    gap: 8px;
+}
+
+.world-form label {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.world-form input,
+.world-form select,
+.world-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    color: #292929;
+    font: inherit;
+}
+
+.world-form textarea {
+    resize: vertical;
+}
+
+.world-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+@media (max-width: 700px) {
+    .world-page {
+        grid-column: 1;
+    }
+
+    .world-heading,
+    .world-card {
+        flex-direction: column;
+    }
+
+    .world-actions {
+        justify-content: flex-start;
+    }
+}

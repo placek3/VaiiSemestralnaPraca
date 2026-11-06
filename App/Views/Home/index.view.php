@@ -23,6 +23,7 @@
     <h2 id="tools-title">Rýchle nástroje</h2>
     <a href="<?= $link->url('home.editor') ?>">Pokračovať v písaní</a>
     <a id="outline" href="#outline">Otvoriť osnovu</a>
+    <a href="<?= $link->url('world.index') ?>">Databáza sveta</a>
     <a id="research" href="#research">Pozrieť poznámky</a>
     <a id="settings" href="#settings">Nastavenia projektu</a>
 </aside>
