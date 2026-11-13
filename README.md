@@ -123,4 +123,8 @@ zostáva v priečinku `html`.
 
 Sekcia **Databáza sveta** (`?c=world`) umožňuje zobrazovať, pridávať, upravovať a odstraňovať postavy, lokality,
 predmety a pojmy. Záznamy spravuje model `App\Models\WorldEntity` cez vstavané ORM frameworku. Pri Docker štarte sa
-`docker/sql/001_world_entities.sql` automaticky spustí a vytvorí tabuľku `world_entities`.
+`docker/sql/001_world_entities.sql` automaticky spustí a vytvorí tabuľky `world_entities` a `world_notes`.
+
+Sekcia **Poznámky** (`?c=note`) poskytuje kompletný CRUD poznámok k záznamom sveta. Každá poznámka je cez cudzí
+kľúč priradená k jednej postave, lokalite, predmetu alebo pojmu; záznam sveta môže mať viac poznámok. Väzbu možno
+pri vytváraní aj úprave poznámky zobraziť a zmeniť. Oba modely používajú vstavané ORM frameworku.

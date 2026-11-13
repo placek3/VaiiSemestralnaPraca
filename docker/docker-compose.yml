@@ -23,7 +23,7 @@ services:
       - "127.0.0.1:3306:3306"
   adminer:
     links:
-      - db
+      - db 
     depends_on:
       - db
     image: adminer

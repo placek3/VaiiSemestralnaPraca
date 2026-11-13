@@ -6,8 +6,10 @@ $currentPage = $_GET['a'] ?? 'index';
 $currentController = $_GET['c'] ?? 'home';
 $isEditor = $currentPage === 'editor';
 $isWorld = $currentController === 'world';
-$isHome = !$isEditor && !$isWorld;
-$pageTitle = $isEditor ? 'Editor' : ($isWorld ? 'Databáza sveta' : 'Prehľad');
+$isNotes = $currentController === 'note';
+$isWorldSection = $isWorld || $isNotes;
+$isHome = !$isEditor && !$isWorldSection;
+$pageTitle = $isEditor ? 'Editor' : ($isWorld ? 'Databáza sveta' : ($isNotes ? 'Poznámky' : 'Prehľad'));
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -16,7 +18,7 @@ $pageTitle = $isEditor ? 'Editor' : ($isWorld ? 'Databáza sveta' : 'Prehľad');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= App\Configuration::APP_NAME ?> – <?= $pageTitle ?></title>
     <link rel="stylesheet" href="<?= $link->asset($isEditor ? 'css/editor.css' : 'css/style.css') ?>">
-    <?php if ($isWorld): ?>
+    <?php if ($isWorldSection): ?>
         <link rel="stylesheet" href="<?= $link->asset('css/world.css') ?>">
     <?php endif; ?>
 </head>
@@ -60,6 +62,11 @@ $pageTitle = $isEditor ? 'Editor' : ($isWorld ? 'Databáza sveta' : 'Prehľad');
                     href="<?= $link->url('world.index') ?>"
                     <?= $isWorld ? 'aria-current="page"' : '' ?>
                 >Databáza sveta</a>
+                <a
+                    class="nav-link<?= $isNotes ? ' active' : '' ?>"
+                    href="<?= $link->url('note.index') ?>"
+                    <?= $isNotes ? 'aria-current="page"' : '' ?>
+                >Poznámky</a>
             </nav>
 
             <?= $contentHTML ?>
