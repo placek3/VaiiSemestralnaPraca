@@ -17,6 +17,7 @@ $pageTitle = $isEditor ? 'Editor' : ($isWorld ? 'Databáza sveta' : ($isNotes ? 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= App\Configuration::APP_NAME ?> – <?= $pageTitle ?></title>
+    <script src="<?= $link->asset('js/script.js') ?>" defer></script>
     <link rel="stylesheet" href="<?= $link->asset($isEditor ? 'css/editor.css' : 'css/style.css') ?>">
     <?php if ($isWorldSection): ?>
         <link rel="stylesheet" href="<?= $link->asset('css/world.css') ?>">

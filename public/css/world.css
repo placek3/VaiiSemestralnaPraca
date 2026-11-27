@@ -55,9 +55,46 @@
     color: #666;
 }
 
+.world-tools {
+    display: grid;
+    grid-template-columns: minmax(180px, 2fr) repeat(2, minmax(140px, 1fr)) auto;
+    align-items: end;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.world-tools label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.world-tools input,
+.world-tools select {
+    min-width: 0;
+    padding: 9px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    color: #292929;
+    font: inherit;
+}
+
+.world-tools [data-world-count] {
+    margin: 0 0 9px;
+    color: #666;
+    white-space: nowrap;
+}
+
 .world-list {
     display: grid;
     gap: 12px;
+}
+
+.world-no-results {
+    margin: 0;
+    padding: 18px;
+    color: #666;
 }
 
 .world-card {
@@ -154,6 +191,14 @@
 @media (max-width: 700px) {
     .world-page {
         grid-column: 1;
+    }
+
+    .world-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .world-tools [data-world-count] {
+        margin: 0;
     }
 
     .world-heading,

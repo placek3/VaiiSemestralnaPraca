@@ -21,9 +21,47 @@ $escape = static fn(mixed $value): string => htmlspecialchars((string)$value, EN
             <a class="world-button" href="<?= $link->url('world.create') ?>">Pridať prvý záznam</a>
         </section>
     <?php else: ?>
-        <section class="world-list" aria-label="Záznamy databázy sveta">
+        <?php
+        $types = array_values(array_unique(array_map(
+            static fn(WorldEntity $entity): string => (string)$entity->type,
+            $entities
+        )));
+        ?>
+        <section class="world-tools" data-world-browser aria-label="Vyhľadávanie a filtrovanie záznamov">
+            <label>
+                Vyhľadať záznam
+                <input data-world-search type="search" placeholder="Názov, typ alebo opis" autocomplete="off">
+            </label>
+            <label>
+                Typ
+                <select data-world-type>
+                    <option value="">Všetky typy</option>
+                    <?php foreach ($types as $type): ?>
+                        <option value="<?= $escape($type) ?>"><?= $escape($type) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+            <label>
+                Zoradiť
+                <select data-world-sort>
+                    <option value="original">Pôvodné poradie</option>
+                    <option value="name-asc">Názov A–Z</option>
+                    <option value="name-desc">Názov Z–A</option>
+                    <option value="type">Typ A–Z</option>
+                </select>
+            </label>
+            <p data-world-count role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="world-list" data-world-list aria-label="Záznamy databázy sveta">
             <?php foreach ($entities as $entity): ?>
-                <article class="world-card">
+                <article
+                    class="world-card"
+                    data-world-card
+                    data-name="<?= $escape($entity->name) ?>"
+                    data-type="<?= $escape($entity->type) ?>"
+                    data-description="<?= $escape($entity->description) ?>"
+                >
                     <div class="world-card-copy">
                         <span class="world-type"><?= $escape($entity->type) ?></span>
                         <h2><?= $escape($entity->name) ?></h2>
@@ -38,6 +76,7 @@ $escape = static fn(mixed $value): string => htmlspecialchars((string)$value, EN
                     </div>
                 </article>
             <?php endforeach; ?>
+            <p class="world-no-results" data-world-empty hidden>Nenašli sa žiadne záznamy zodpovedajúce filtru.</p>
         </section>
     <?php endif; ?>
 </main>
